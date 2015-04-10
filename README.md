@@ -1,5 +1,11 @@
 # lovesports
 
+Update on 4/10/2015
+
+Rest of DAO has been created. Please update the database as well.
+
+Create on 4/8/2015
+
 Please Update your database with attached sql file. 
 
 Some One to One class in java orm file is pendding to resolved. I will figure it out soon.
