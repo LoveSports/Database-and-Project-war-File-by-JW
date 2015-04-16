@@ -1,5 +1,9 @@
 # lovesports
 
+Update on 4/16/2015
+
+This file will contain database only.
+
 Update on 4/10/2015
 
 Rest of DAO has been created. Please update the database as well.
