@@ -1,6 +1,7 @@
 # lovesports
 
 Update on 4/18/2015
+
 添加
 1.FollowingDAO中加入read()方法，方便查找Following是否存在
 2.Profile.jsp加入follow和改信息、密码功能
