@@ -50,14 +50,17 @@ DROP TABLE IF EXISTS `blog`;
 CREATE TABLE `blog` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(45) DEFAULT NULL,
+  `text` varchar(10240) DEFAULT NULL,
   `username` varchar(45) DEFAULT NULL,
   `groupName` varchar(45) DEFAULT NULL,
+  `createDate` datetime DEFAULT NULL,
+  `modifyDate` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `blog_idx` (`username`,`groupName`),
   KEY `blog2group_idx` (`groupName`),
   CONSTRAINT `blog2group` FOREIGN KEY (`groupName`) REFERENCES `group` (`name`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `blog2user` FOREIGN KEY (`username`) REFERENCES `user` (`username`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -66,7 +69,7 @@ CREATE TABLE `blog` (
 
 LOCK TABLES `blog` WRITE;
 /*!40000 ALTER TABLE `blog` DISABLE KEYS */;
-INSERT INTO `blog` VALUES (1,'blog1','steven05jiang@gmail.com','Forum'),(2,'blog2','steven05jiang@gmail.com','Forum'),(3,'blog3','steven05jiang@gmail.com','Forum');
+INSERT INTO `blog` VALUES (1,'blog1','hello world<div><br></div><img src=\"http://img2.imgtn.bdimg.com/it/u=834958572,3645145128&amp;fm=21&amp;gp=0.jpg\">','steven05jiang@gmail.com','Forum',NULL,'2015-04-20 00:00:00'),(2,'blog2',NULL,'steven05jiang@gmail.com','Forum',NULL,NULL),(3,'blog3',NULL,'steven05jiang@gmail.com','Forum',NULL,NULL),(6,'','asdf','steven05jiang@gmail.com','Forum','2015-04-17 00:00:00',NULL),(7,'','a','steven05jiang@gmail.com','Forum','2015-04-17 00:00:00',NULL),(8,'','I post the blog successfully!','steven05jiang@gmail.com','Forum','2015-04-17 00:00:00',NULL),(9,'','a','steven05jiang@gmail.com','Forum','2015-04-17 00:00:00',NULL),(10,'adf','aa','steven05jiang@gmail.com','Forum','2015-04-17 00:00:00',NULL),(11,'try','try','steven05jiang@gmail.com','Forum','2015-04-17 00:00:00',NULL),(12,'yahoo!','aa','steven05jiang@gmail.com','Forum','2015-04-17 00:00:00',NULL),(18,'Yes!!!','Yahoo! Good job.','steven05jiang@gmail.com','Forum','2015-04-17 00:00:00','2015-04-18 00:00:00'),(19,'Come on',NULL,'steven05jiang@gmail.com','Forum',NULL,NULL),(22,'avsdfasdf','sdfadsf','steven05jiang@gmail.com','Forum','2015-04-17 00:00:00',NULL),(23,'ff','<div>lalala</div><div><br></div><div><br></div><div><br></div><div><br></div>ff<img src=\"https://www.google.com/images/srpr/chrome_ntp_white_logo2.png\"><div><br></div><div><br></div><div>hahaha</div>','steven05jiang@gmail.com','Forum','2015-04-17 00:00:00','2015-04-19 00:00:00'),(24,'This is my first blog','Enjoy it!<div><br></div><img src=\"http://images.nationalgeographic.com/wpf/media-live/photos/000/687/cache/bonobo-congo-ziegler_68751_990x742.jpg\">','David@qq.com','Forum','2015-04-18 00:00:00',NULL),(25,'HELLO','TEST','steven05jiang@gmail.com','Forum','2015-04-20 00:00:00',NULL);
 /*!40000 ALTER TABLE `blog` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -171,12 +174,13 @@ CREATE TABLE `comment` (
   `blogId` int(11) DEFAULT NULL,
   `title` varchar(45) DEFAULT NULL,
   `text` varchar(255) DEFAULT NULL,
+  `createDate` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `commend1_idx` (`username`),
   KEY `commend2_idx` (`blogId`),
   CONSTRAINT `commend1` FOREIGN KEY (`username`) REFERENCES `user` (`username`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `commend2` FOREIGN KEY (`blogId`) REFERENCES `blog` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -185,6 +189,7 @@ CREATE TABLE `comment` (
 
 LOCK TABLES `comment` WRITE;
 /*!40000 ALTER TABLE `comment` DISABLE KEYS */;
+INSERT INTO `comment` VALUES (2,'steven05jiang@gmail.com',1,'Try agian','Test',NULL),(6,'steven05jiang@gmail.com',1,'sd',NULL,NULL),(7,'steven05jiang@gmail.com',1,'A',NULL,NULL),(8,'steven05jiang@gmail.com',1,'A',NULL,NULL),(9,'steven05jiang@gmail.com',1,'a',NULL,NULL),(10,'steven05jiang@gmail.com',1,'a',NULL,NULL),(11,'steven05jiang@gmail.com',1,'a',NULL,NULL),(12,'steven05jiang@gmail.com',1,'A','a',NULL),(13,'steven05jiang@gmail.com',1,'A','a',NULL),(14,'steven05jiang@gmail.com',1,'gaga','adada',NULL),(15,'steven05jiang@gmail.com',1,'gaga','adada',NULL),(16,'steven05jiang@gmail.com',1,'gaga','adada',NULL),(17,'steven05jiang@gmail.com',1,'asdf','sdf',NULL),(18,'steven05jiang@gmail.com',1,'asdf','sdfff',NULL),(19,'steven05jiang@gmail.com',1,NULL,NULL,NULL),(20,'steven05jiang@gmail.com',1,NULL,NULL,NULL),(21,'steven05jiang@gmail.com',1,NULL,NULL,NULL),(22,'steven05jiang@gmail.com',1,NULL,NULL,NULL),(23,'steven05jiang@gmail.com',1,NULL,NULL,NULL),(24,'steven05jiang@gmail.com',1,NULL,NULL,NULL),(25,'steven05jiang@gmail.com',1,NULL,NULL,NULL),(26,'steven05jiang@gmail.com',1,NULL,NULL,NULL),(27,'steven05jiang@gmail.com',1,NULL,NULL,NULL),(28,'steven05jiang@gmail.com',1,NULL,NULL,NULL),(29,'steven05jiang@gmail.com',1,NULL,NULL,NULL),(30,'steven05jiang@gmail.com',1,NULL,NULL,NULL),(31,'steven05jiang@gmail.com',1,NULL,NULL,NULL),(32,'steven05jiang@gmail.com',1,NULL,NULL,NULL),(33,'steven05jiang@gmail.com',1,NULL,NULL,NULL),(34,'steven05jiang@gmail.com',1,NULL,NULL,NULL),(35,'steven05jiang@gmail.com',1,NULL,NULL,NULL),(36,'steven05jiang@gmail.com',1,NULL,NULL,NULL),(37,'steven05jiang@gmail.com',1,NULL,NULL,NULL),(38,'steven05jiang@gmail.com',1,NULL,NULL,NULL),(39,'steven05jiang@gmail.com',1,NULL,NULL,NULL),(40,'steven05jiang@gmail.com',1,NULL,NULL,NULL),(41,'steven05jiang@gmail.com',1,NULL,NULL,NULL),(42,'steven05jiang@gmail.com',1,NULL,NULL,NULL),(43,'steven05jiang@gmail.com',1,NULL,NULL,NULL),(44,'steven05jiang@gmail.com',1,NULL,NULL,NULL),(45,'steven05jiang@gmail.com',1,NULL,NULL,NULL),(46,'steven05jiang@gmail.com',1,NULL,NULL,NULL),(47,'steven05jiang@gmail.com',1,NULL,NULL,NULL),(48,'steven05jiang@gmail.com',1,NULL,NULL,NULL),(49,'steven05jiang@gmail.com',1,NULL,NULL,NULL),(50,'steven05jiang@gmail.com',1,NULL,NULL,NULL),(51,'steven05jiang@gmail.com',1,NULL,NULL,NULL),(52,'steven05jiang@gmail.com',1,NULL,NULL,NULL),(54,'steven05jiang@gmail.com',1,NULL,NULL,NULL),(55,'steven05jiang@gmail.com',1,NULL,NULL,NULL),(56,'steven05jiang@gmail.com',1,NULL,NULL,NULL),(57,'steven05jiang@gmail.com',1,NULL,NULL,NULL),(59,'steven05jiang@gmail.com',1,'','try try try',NULL),(60,'steven05jiang@gmail.com',1,'aaa','bbb',NULL),(61,'steven05jiang@gmail.com',1,'','Today is good day!!!',NULL),(62,'steven05jiang@gmail.com',1,'T','t',NULL),(63,'steven05jiang@gmail.com',1,'hello','what time is it','2015-04-17 00:00:00'),(66,'steven05jiang@gmail.com',18,'yeye','hhaha','2015-04-18 00:00:00'),(67,'David@qq.com',18,'Hello','yeah','2015-04-18 00:00:00'),(68,'David@qq.com',23,'Hello','hello','2015-04-18 00:00:00'),(69,'steven05jiang@gmail.com',24,'a','s','2015-04-20 00:00:00'),(70,'steven05jiang@gmail.com',1,'@David :','bababa','2015-04-20 00:00:00');
 /*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -225,6 +230,7 @@ CREATE TABLE `group` (
   `name` varchar(45) NOT NULL,
   `description` varchar(255) DEFAULT NULL,
   `username` varchar(45) DEFAULT NULL,
+  `createDate` datetime DEFAULT NULL,
   PRIMARY KEY (`name`),
   KEY `group2user_idx` (`username`),
   CONSTRAINT `group2user` FOREIGN KEY (`username`) REFERENCES `user` (`username`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -237,7 +243,7 @@ CREATE TABLE `group` (
 
 LOCK TABLES `group` WRITE;
 /*!40000 ALTER TABLE `group` DISABLE KEYS */;
-INSERT INTO `group` VALUES ('Basketball','We love basketball','steven05jiang@gmail.com'),('Football','Here we go','steven05jiang@gmail.com'),('Forum','Sports forum for all users','steven05jiang@gmail.com');
+INSERT INTO `group` VALUES ('Basketball','We love basketball','steven05jiang@gmail.com',NULL),('Football','Here we go','steven05jiang@gmail.com',NULL),('Forum','Sports forum for all users','steven05jiang@gmail.com',NULL);
 /*!40000 ALTER TABLE `group` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -278,14 +284,11 @@ CREATE TABLE `img` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
   `url` varchar(255) DEFAULT NULL,
-  `blogId` int(11) DEFAULT NULL,
   `categoryId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `img1_idx` (`blogId`),
   KEY `img2_idx` (`categoryId`),
-  CONSTRAINT `img1` FOREIGN KEY (`blogId`) REFERENCES `blog` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `img2` FOREIGN KEY (`categoryId`) REFERENCES `category` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -294,7 +297,7 @@ CREATE TABLE `img` (
 
 LOCK TABLES `img` WRITE;
 /*!40000 ALTER TABLE `img` DISABLE KEYS */;
-INSERT INTO `img` VALUES (1,'img1',NULL,1,1);
+INSERT INTO `img` VALUES (1,'img1','url1',1),(2,'img2','url2',NULL);
 /*!40000 ALTER TABLE `img` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -348,6 +351,7 @@ CREATE TABLE `stamp` (
 
 LOCK TABLES `stamp` WRITE;
 /*!40000 ALTER TABLE `stamp` DISABLE KEYS */;
+INSERT INTO `stamp` VALUES (1,'Alice@gmail.com'),(1,'steven05jiang@gmail.com'),(18,'steven05jiang@gmail.com'),(1,'zgjxxzn@gmail.com');
 /*!40000 ALTER TABLE `stamp` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -379,33 +383,6 @@ LOCK TABLES `subscription` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `text`
---
-
-DROP TABLE IF EXISTS `text`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `text` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `text` varchar(1024) DEFAULT NULL,
-  `blogId` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `text_idx` (`blogId`),
-  CONSTRAINT `text` FOREIGN KEY (`blogId`) REFERENCES `blog` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `text`
---
-
-LOCK TABLES `text` WRITE;
-/*!40000 ALTER TABLE `text` DISABLE KEYS */;
-INSERT INTO `text` VALUES (1,'I love basketball!',1),(2,'Let\'s go Skiing',2),(3,'I hate homework',3);
-/*!40000 ALTER TABLE `text` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `user`
 --
 
@@ -419,9 +396,9 @@ CREATE TABLE `user` (
   `firstName` varchar(45) DEFAULT NULL,
   `lastName` varchar(45) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
+  `frozen` int(11) DEFAULT '0',
   PRIMARY KEY (`username`),
-  UNIQUE KEY `username_UNIQUE` (`username`),
-  UNIQUE KEY `nickname_UNIQUE` (`nickname`)
+  UNIQUE KEY `username_UNIQUE` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -431,7 +408,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('Alice@gmail.com','alice','Alice','Alice','Wonderland','Alice@gmail.com'),('Bob@gmail.com','bob','Bob',NULL,NULL,NULL),('Clare@gmail.com','clare','Clare',NULL,NULL,NULL),('David@qq.com','david','David',NULL,NULL,NULL),('Ella@163.com','ella','Ella',NULL,NULL,NULL),('Frank@hotmail.com','frank','Frank',NULL,NULL,NULL),('Grace@gmail.com','grace','Grace','Grace','Cao','Grace@gmail.com'),('Hera@gmail.com','hera','Hera','Hera','Dove','Hera@gmail.com'),('shen.hu@husky.neu.edu','shenhualong','Hu','Hualong','Shen','shen.hu@husky.neu.edu'),('steven05jiang@gmail.com','jiangwei','Jiang','Wei','Jiang','steven05jiang@gmail.com'),('zgjxxzn@gmail.com','xiongzinan','Xiong','Zinan','Xiong','zgjxxzn@gmail.com');
+INSERT INTO `user` VALUES ('abc',NULL,'ABC',NULL,NULL,NULL,0),('Alice@gmail.com','alice','Alice','Alice','Wonderland','Alice@gmail.com',0),('BCc',NULL,'ABC',NULL,NULL,NULL,0),('Bob@gmail.com','bob','Bob',NULL,NULL,NULL,0),('Clare@gmail.com','clare','Clare',NULL,NULL,NULL,0),('David@qq.com','david','David',NULL,NULL,NULL,0),('Ella@163.com','ella','Ella',NULL,NULL,NULL,0),('Frank@hotmail.com','frank','Frank',NULL,NULL,NULL,0),('Grace@gmail.com','grace','Grace','Grace','Cao','Grace@gmail.com',0),('Hera@gmail.com','hera','Hera','Hera','Dove','Hera@gmail.com',0),('shen.hu@husky.neu.edu','shenhualong','Hu','Hualong','Shen','shen.hu@husky.neu.edu',0),('steven05jiang@gmail.com','jiangwei','Jiang','Wei','Jiang','steven05jiang@gmail.com',0),('zgjxxzn@gmail.com','xiongzinan','Xiong','Zinan','Xiong','zgjxxzn@gmail.com',0);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -444,4 +421,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-04-16 13:29:58
+-- Dump completed on 2015-04-22 13:05:57
