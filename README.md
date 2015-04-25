@@ -1,5 +1,33 @@
 # lovesports
 
+Update on 4/24/2015
+
+添加
+
+1.admin管理blog，可以block/unblock blog,或者删除blog。
+
+2.profile显示自己写的和collect的blog
+
+修改
+
+1.数据库Blog加了一个present域，置1表示present，置0表示block不可见。被block的blog在自己登录后的profile标记出被block，而未登录或别人profile的block blog不可见
+
+2.数据库指向Blog表的foreign key都改成了on delete cascade,以便删除blog，不改不能删
+
+3.修复了ManagerUser.jsp的一个小bug
+
+4.修复了UserSignUp.jsp的一个小bug
+
+问题
+
+1.Blog页没有实现collect功能？
+
+2.对于被block的blog，在group页应该做相应处理
+
+3.有的blog没title，还是应该强制有下吧
+
+-------------------------------------------------------
+
 Update on 4/19/2015
 
 修改
